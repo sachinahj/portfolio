@@ -211,7 +211,13 @@ $(function () {
 
         // Initialize Gmap
         function initGmap() {
-            var position = new google.maps.LatLng(30.269693, -97.74252);
+            var mapData = document.getElementById("mapData").dataset;
+            var lat = parseFloat(mapData.lat);
+            var lng = parseFloat(mapData.lng);
+            console.log("mapData", mapData);
+            console.log("lat", lat);
+            console.log("lng", lng);
+            var position = new google.maps.LatLng(lat, lng);
 
             $('#map').gmap3({
                 map: {
@@ -223,7 +229,7 @@ $(function () {
                 marker: {
                     values: [
                         {latLng: position},
-                        {latLng: [30.269693, -97.74252]}
+                        {latLng: [lat, lng]}
                     ],
                     options: {
                         draggable: false,
